@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="{{ page.lang | default: site.lang | default: "en" }}">
+    <head>
+  {%- include head.html -%}
+    </head>
+  <body>
+   <header class="texture-{{ site.texture.style }}">
+		<div class="container">
+			{%- include nav.html -%}
+		</div>
+		{%- include page_header.html -%}	
+	</header>
+    <main>
+    <!-- main class="page-content" aria-label="Content"-->
+      <div class="container">
+        {{ content }}
+      </div>
+    </main>
+
+    {%- include footer.html -%}
+
+  </body>
+
+</html>
