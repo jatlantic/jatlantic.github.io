@@ -1,3 +1,3 @@
-# Repository for sidravi1.github.io
+# Repository for jatlantic.github.io
 
 - Go to [site](https://jatlantic.github.io/)
