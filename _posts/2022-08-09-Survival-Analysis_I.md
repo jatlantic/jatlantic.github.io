@@ -44,21 +44,24 @@ Let's define some key terms that will be useful for our models:
     \end{cases}$ denote the RV whether the observation has been censored or not.
 3. **Survivor Function**
    - Let $S(t)$ be the survivor function that displays the probability of the object of study surviving longer than time $t$ ($P(T>t)$).
-   - By defining the **cumulative distribution function** (c.d.f) $F(t) = P(T \leq t) = \int_0^t f(x) \,dx$ of T where $f(t)$ equals the **probability density function** (p.d.f.), we can express the survivor function as $S(t) = P(T>t) = 1 - F(t) = \int_0^\infty f(x) \,dx$
-  
-  
-<p align="top">
+     Theoretically the curve would look like below:
+     <p align="top">
   <img alt="Survfunc1" src="/assets/2022-08-10_surv_theoretical.png" width="45%" />
   <figcaption>Survivor Function Theoretical (Kleinbaum, Klein)</figcaption>
-&nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp; &nbsp; &nbsp; &nbsp;
+</p>
+   - By defining the **cumulative distribution function** (c.d.f) $F(t) = P(T \leq t) = \int_0^t f(x) \,dx$ of T where $f(t)$ equals the **probability density function** (p.d.f.), we can express the survivor function as $S(t) = P(T>t) = 1 - F(t) = \int_0^\infty f(x) \,dx$
+  - In practice the survivor function takes the form of steps as can be seen below:
+  
+<p align="top">
   <img alt="Survfunc2" src="/assets/2022-08-10_surv_practical.png" width="45%" /> 
     <figcaption>Survivor Function Practical (Kleinbaum, Klein)</figcaption>
 </p>
 
-4. **Hazard Function**
+1. **Hazard Function**
    - Let $h(t)$ be the hazard function that provides us with "the instantaneous potential per unit time [rate not probability] for the event to occur, given that the individual has survived up to time $t$" (Kleinbaum and Klein, 2012): 
   
-      $h(t) &=  \lim_{\delta t \rightarrow 0 } \; \frac{P( t \leq T \leq t + \Delta t | T > t)}{\Delta t}$
+      $h(t) =  \lim_{\delta t \rightarrow 0 } \frac{P( t \leq T \leq t + \Delta t | T > t)}{\Delta t}$
 
    - We can imagine the nominator $P(t \leq T \leq t + \Delta t | T > t)$ as the probability that the event happens to the object of study in the interval $[t, t + \Delta t]$ conditional on survival till time $t$ .
    - The hazard function cannot be negative $h(t) \geq 0$ and has not upper bound.
