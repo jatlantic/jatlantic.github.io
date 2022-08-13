@@ -50,9 +50,10 @@ Let's define some key terms that will be useful for our models:
       ![Survivor Function Theoretical (Source: Kleinbaum, Klein)](/assets/2022-08-10_surv_theoretical.png)
      ![Survivor Function Practical (Source: Kleinbaum, Klein)](/assets/2022-08-10_surv_practical.png)
 
-<p align="top">
-  <img src="/assets/2022-08-10_surv_theoretical.png" width="50%" />
-  <img src="/assets/2022-08-10_surv_theoretical.png" width="50%" /> 
+<p align="middle">
+  <img alt="Survivor Function Theoretical (Source: Kleinbaum, Klein)" src="/assets/2022-08-10_surv_theoretical.png" width="50%" />
+&nbsp; &nbsp; &nbsp; &nbsp;
+  <img alt="Survivor Function Practical (Source: Kleinbaum, Klein)" src="/assets/2022-08-10_surv_practical.png" width="50%" /> 
 </p>
 
 1. Hazard Function
