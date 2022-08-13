@@ -26,12 +26,12 @@ The main challenge and the reason why survival models are different from, say em
 3. **Interval Censoring**
    - the time of the event is not exactly observed, but bounded between two time points
    - 
-Right censoring is most commonly encountered and we will focus on right censoring for the remainder of this series. In medical studies, right censoring can occur when a patient moves away (loss to follow-up), the patient stops treatment (drop out) or the termination of the study.
+Right censoring is most commonly encountered and we will focus on right censoring for the remainder of this series. In medical studies, right censoring can occur when a patient moves away (loss to follow-up), the patient stops treatment (drop out) or the termination of the study. See picture below (Kleinbaum, Klein):
 
-<figure>
-  <img  align="center" alt="Survfunc2" src="/assets/2022-08-10_right_censoring.png" width="45%" /> 
-    <figcaption>Right censoring (Kleinbaum, Klein)</figcaption>
-</figure>
+<p align="center">
+  <img  align="center" alt="rightcensoring" src="/assets/2022-08-10_right_censoring.png" width="%" /> 
+   <!-- <figcaption>Right censoring (Kleinbaum, Klein)</figcaption> -->
+</p>
 
 
 ## Key Metrics
@@ -40,27 +40,31 @@ Let's define some key terms that will be useful for our models:
 
 1. **Survival Time**
    - Let $T$ be a nonnegative ($T \leq 0$) random variable (RV) that represents the survival time of the object of study and let $t$ denote the specific value for $T$.
+
 2. **Censorship**
-   - Let $$begin{aligned} d =
-    \begin{cases}
+   - Let 
+  $d =\begin{cases}
       0, & \text{if censored} \\
       1, & \text{if event}
-    \end{cases} \end{aligned}$$ denote the RV whether the observation has been censored or not.
+    \end{cases}$
+    
+    denote the RV whether the observation has been censored or not.
+
 3. **Survivor Function**
    - Let $S(t)$ be the survivor function that displays the probability of the object of study surviving longer than time $t$ ($P(T>t)$).
-     Theoretically the curve would look like below:
+     Theoretically the curve would look like below (Kleinbaum, Klein):
 
 <p align="center">
   <img alt="Survfunc1" src="/assets/2022-08-10_surv_theoretical.png" width="45%" />
-  <figcaption>Survivor Function Theoretical (Kleinbaum, Klein)</figcaption>
+  <!--<figcaption>Survivor Function Theoretical (Kleinbaum, Klein)</figcaption>-->
 </p>
 
    - By defining the **cumulative distribution function** (c.d.f) $F(t) = P(T \leq t) = \int_0^t f(x) \,dx$ of T where $f(t)$ equals the **probability density function** (p.d.f.), we can express the survivor function as $S(t) = P(T>t) = 1 - F(t) = \int_0^\infty f(x) \,dx$
-  - In practice the survivor function takes the form of steps as can be seen below:
+  - In practice the survivor function takes the form of steps as can be seen below (Kleinbaum, Klein):
   
 <p align="center">
   <img alt="Survfunc2" src="/assets/2022-08-10_surv_practical.png" width="45%" /> 
-    <figcaption>Survivor Function Practical (Kleinbaum, Klein)</figcaption>
+  <!--  <figcaption>Survivor Function Practical (Kleinbaum, Klein)</figcaption>-->
 </p>
 
 4. **Hazard Function**
@@ -81,10 +85,11 @@ h(t) = -\left[ \frac{dS(t)/dt}{s(t)}\right]
 
 
 All of the above is neatly summarized in a diagram from the [lifelines](https://lifelines.readthedocs.io) package:
-
+<p align="center">
 <img src="https://lifelines.readthedocs.io/en/latest/_images/map.png" width=400
      alt="surv_funcs map"
      style="margin-right: 10px;" />
+</p>
 <br>
 
 
