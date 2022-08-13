@@ -63,7 +63,7 @@ S(t) = \exp \left[ - \int_0^t h(u)du \right]
 \end{aligned}$
 
 $\begin{aligned}
-S(t) = -\left[ \frac{dS(t)/dt}{s(t)}\right]
+h(t) = -\left[ \frac{dS(t)/dt}{s(t)}\right]
 \end{aligned}$
 
 
