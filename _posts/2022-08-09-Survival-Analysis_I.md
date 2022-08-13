@@ -28,7 +28,7 @@ The main challenge and the reason why survival models are different from, say em
    - 
 Right censoring is most commonly encountered and we will focus on right censoring for the remainder of this series. In medical studies, right censoring can occur when a patient moves away (loss to follow-up), the patient stops treatment (drop out) or the termination of the study.
 
-![Right censoring (Source: Kleinbaum, Klein)](assets/2022-08-10_right_censoring.png)
+![Right censoring (Source: Kleinbaum, Klein)](/assets/2022-08-10_right_censoring.png)
 
 ## Key Metrics
 
@@ -47,15 +47,12 @@ Let's define some key terms that will be useful for our models:
    - By defining the **cumulative distribution function** (c.d.f) $F(t) = P(T \leq t) = \int_0^t f(x) \,dx$ of T where $f(t)$ equals the **probability density function** (p.d.f.), we can express the survivor function as $S(t) = P(T>t) = 1 - F(t) = \int_0^\infty f(x) \,dx$
   
   
-  ![Survivor Function Theoretical (Source: Kleinbaum, Klein)]({{"assets/2022-08-10_surv_theoretical.png" | absolute_url}})
-
-  ![Survivor Function Practical (Source: Kleinbaum, Klein)](/assets/2022-08-10_surv_practical.png)
+  ![Survivor Function Theoretical (Source: Kleinbaum, Klein)](/assets/2022-08-10_surv_theoretical.png) ![Survivor Function Practical (Source: Kleinbaum, Klein)](/assets/2022-08-10_surv_practical.png)
 
 4. Hazard Function
    - Let $h(t)$ be the hazard function that provides us with "the instantaneous potential per unit time [rate not probability] for the event to occur, given that the individual has survived up to time $t$" (Kleinbaum and Klein, 2012):
      $\begin{aligned}
-     h(t) &=  \lim_{\delta t \rightarrow 0 } \; \frac{P( t \le T \le t + \Delta t | T > t)}{\Delta t}
-   \end{aligned}$
+     h(t) &=  \lim_{\delta t \rightarrow 0 } \; \frac{P( t \le T \le t + \Delta t | T > t)}{\Delta t} \end{aligned}$
    - We can imagine the nominator $P(t \le T \le t + \Delta t | T > t)$ as the probability that the event happens to the object of study in the interval $[t, t + \Delta t]$ conditional on survival till time $t$.
    - The hazard function cannot be negative $h(t) \geq 0$ and has not upper bound.
 
