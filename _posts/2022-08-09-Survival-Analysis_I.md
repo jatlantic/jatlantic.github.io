@@ -48,16 +48,20 @@ Let's define some key terms that will be useful for our models:
   
   
 <p align="top">
-  <img alt="Survivor Function Theoretical (Source: Kleinbaum, Klein)" src="/assets/2022-08-10_surv_theoretical.png" width="45%" />
+  <img alt="Survfunc1" src="/assets/2022-08-10_surv_theoretical.png" width="45%" />
+  <figcaption>Survivor Function Theoretical (Source: Kleinbaum, Klein)</figcaption>
 &nbsp; &nbsp; &nbsp; &nbsp;
-  <img alt="Survivor Function Practical (Source: Kleinbaum, Klein)" src="/assets/2022-08-10_surv_practical.png" width="45%" /> 
+  <img alt="Survfunc2" src="/assets/2022-08-10_surv_practical.png" width="45%" /> 
+    <figcaption>Survivor Function Practical (Source: Kleinbaum, Klein)</figcaption>
 </p>
 
 1. Hazard Function
-   - Let $h(t)$ be the hazard function that provides us with "the instantaneous potential per unit time [rate not probability] for the event to occur, given that the individual has survived up to time $t$" (Kleinbaum and Klein, 2012):
-     $\begin{aligned}
-     h(t) &=  \lim_{\delta t \rightarrow 0 } \; \frac{P( t \le T \le t + \Delta t | T > t)}{\Delta t} \end{aligned}$
-   - We can imagine the nominator $P(t \le T \le t + \Delta t | T > t)$ as the probability that the event happens to the object of study in the interval $[t, t + \Delta t]$ conditional on survival till time $t$ .
+   - Let $h(t)$ be the hazard function that provides us with "the instantaneous potential per unit time [rate not probability] for the event to occur, given that the individual has survived up to time $t$" (Kleinbaum and Klein, 2012): 
+  
+      $\begin{aligned}
+     h(t) &=  \lim_{\delta t \rightarrow 0 } \; \frac{P( t \leq T \leq t + \Delta t | T > t)}{\Delta t} \end{aligned}$
+
+   - We can imagine the nominator $P(t \leq T \leq t + \Delta t | T > t)$ as the probability that the event happens to the object of study in the interval $[t, t + \Delta t]$ conditional on survival till time $t$ .
    - The hazard function cannot be negative $h(t) \geq 0$ and has not upper bound.
 
 Now, the survivor function and the hazard function have a clearly defined relationship - they can be derived from each other. This is generally expressed with these formulaes:
