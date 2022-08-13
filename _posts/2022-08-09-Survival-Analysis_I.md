@@ -28,7 +28,12 @@ The main challenge and the reason why survival models are different from, say em
    - 
 Right censoring is most commonly encountered and we will focus on right censoring for the remainder of this series. In medical studies, right censoring can occur when a patient moves away (loss to follow-up), the patient stops treatment (drop out) or the termination of the study.
 
-![Right censoring (Source: Kleinbaum, Klein)](/assets/2022-08-10_right_censoring.png)
+<p align="center">
+  <img alt="Survfunc2" src="/assets/2022-08-10_right_censoring.png" width="45%" /> 
+    <figcaption>Right censoring (Kleinbaum, Klein)</figcaption>
+</p>
+
+
 
 ## Key Metrics
 
