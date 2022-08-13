@@ -29,7 +29,7 @@ The main challenge and the reason why survival models are different from, say em
 Right censoring is most commonly encountered and we will focus on right censoring for the remainder of this series. In medical studies, right censoring can occur when a patient moves away (loss to follow-up), the patient stops treatment (drop out) or the termination of the study.
 
 <figure>
-  <img alt="Survfunc2" src="/assets/2022-08-10_right_censoring.png" width="45%" /> 
+  <img  align="center" alt="Survfunc2" src="/assets/2022-08-10_right_censoring.png" width="45%" /> 
     <figcaption>Right censoring (Kleinbaum, Klein)</figcaption>
 </figure>
 
@@ -64,9 +64,7 @@ Let's define some key terms that will be useful for our models:
 </p>
 
 4. **Hazard Function**
-   - Let $h(t)$ be the hazard function that provides us with "the instantaneous potential per unit time [rate not probability] for the event to occur, given that the individual has survived up to time t" (Kleinbaum and Klein, 2012): 
-  
-      $h(t) =  \lim_{\Delta t \rightarrow 0 } \frac{P( t \leq T \leq t + \Delta t | T > t)}{\Delta t}$
+   - Let $h(t)$ be the hazard function that provides us with "the instantaneous potential per unit time [rate not probability] for the event to occur, given that the individual has survived up to time t" (Kleinbaum and Klein, 2012): $\begin{aligned} h(t) =  \lim_{\Delta t \rightarrow 0 } \frac{P( t \leq T \leq t + \Delta t | T > t)}{\Delta t} \end{aligned}$
 
    - We can imagine the nominator $P(t \leq T \leq t + \Delta t | T > t)$ as the probability that the event happens to the object of study in the interval $[t, t + \Delta t]$ conditional on survival till time $t$ .
    - The hazard function cannot be negative $h(t) \geq 0$ and has not upper bound.
