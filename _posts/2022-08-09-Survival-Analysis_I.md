@@ -19,11 +19,11 @@ This leads us to estimate functions of survival and hazard (explained below).
 ## The Premise - Censoring
 
 The main challenge and the reason why survival models are different from, say empirical estimators, is that they have to deal with censoring. Generally, there are three types of censoring:
-1. Left Censoring
+1. **Left Censoring**
    - we don't know when true event occurred (e.g. infection at birth) - it was before the discovery
-2. Right Censoring
+2. **Right Censoring**
    - we do not observe the event so that the true survival time is likely longer than what the study observes
-3. Interval Censoring
+3. **Interval Censoring**
    - the time of the event is not exactly observed, but bounded between two time points
    - 
 Right censoring is most commonly encountered and we will focus on right censoring for the remainder of this series. In medical studies, right censoring can occur when a patient moves away (loss to follow-up), the patient stops treatment (drop out) or the termination of the study.
@@ -34,32 +34,31 @@ Right censoring is most commonly encountered and we will focus on right censorin
 
 Let's define some key terms that will be useful for our models:
 
-1. Survival Time
+1. **Survival Time**
    - Let $T$ be a nonnegative ($T \leq 0$) random variable (RV) that represents the survival time of the object of study and let $t$ denote the specific value for $T$.
-2. Censorship
+2. **Censorship**
    - Let $d =
     \begin{cases}
       0, & \text{if censored} \\
       1, & \text{if event}
     \end{cases}$ denote the RV whether the observation has been censored or not.
-3. Survivor Function
+3. **Survivor Function**
    - Let $S(t)$ be the survivor function that displays the probability of the object of study surviving longer than time $t$ ($P(T>t)$).
    - By defining the **cumulative distribution function** (c.d.f) $F(t) = P(T \leq t) = \int_0^t f(x) \,dx$ of T where $f(t)$ equals the **probability density function** (p.d.f.), we can express the survivor function as $S(t) = P(T>t) = 1 - F(t) = \int_0^\infty f(x) \,dx$
   
   
 <p align="top">
   <img alt="Survfunc1" src="/assets/2022-08-10_surv_theoretical.png" width="45%" />
-  <figcaption>Survivor Function Theoretical (Source: Kleinbaum, Klein)</figcaption>
+  <figcaption>Survivor Function Theoretical (Kleinbaum, Klein)</figcaption>
 &nbsp; &nbsp; &nbsp; &nbsp;
   <img alt="Survfunc2" src="/assets/2022-08-10_surv_practical.png" width="45%" /> 
-    <figcaption>Survivor Function Practical (Source: Kleinbaum, Klein)</figcaption>
+    <figcaption>Survivor Function Practical (Kleinbaum, Klein)</figcaption>
 </p>
 
-1. Hazard Function
+4. **Hazard Function**
    - Let $h(t)$ be the hazard function that provides us with "the instantaneous potential per unit time [rate not probability] for the event to occur, given that the individual has survived up to time $t$" (Kleinbaum and Klein, 2012): 
   
-      $\begin{aligned}
-     h(t) &=  \lim_{\delta t \rightarrow 0 } \; \frac{P( t \leq T \leq t + \Delta t | T > t)}{\Delta t} \end{aligned}$
+      $h(t) &=  \lim_{\delta t \rightarrow 0 } \; \frac{P( t \leq T \leq t + \Delta t | T > t)}{\Delta t}$
 
    - We can imagine the nominator $P(t \leq T \leq t + \Delta t | T > t)$ as the probability that the event happens to the object of study in the interval $[t, t + \Delta t]$ conditional on survival till time $t$ .
    - The hazard function cannot be negative $h(t) \geq 0$ and has not upper bound.
