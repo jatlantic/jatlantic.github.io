@@ -1,13 +1,13 @@
 ---
 layout: "post"
-title: "Survival Analysis I - Introduction"
-date: "2022-08-09 11:51"
+title: "Survival Analysis II - Kaplan-Meier Estimator"
+date: "2022-08-14 11:51"
 comments: true
 use_math: true
 ---
 
 I recently gave a short intro to survival models to the team. Here, the goal is to lay out the basics and the motivate the use of survival analysis.
-Part II covers the Kaplan-Meier Estimator and Part III focuses on the Cox Proportional Hazards Model.
+Part II covers the Kaplan-Meier Estimator and Part II focuses on the Cox Proportional Hazards Model.
 
 ## Motivation & Goals
 1. In many situations we would like to model the first time an event happens (time-to-event data). This could be the failure of a machine, the death of a cancer patient or the cancellation of a subscription.
