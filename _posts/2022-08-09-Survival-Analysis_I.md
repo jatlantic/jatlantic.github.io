@@ -5,9 +5,6 @@ date: "2022-08-09 11:51"
 comments: true
 use_math: true
 ---
-<script type="text/javascript" async
-  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
-</script>
 
 I recently gave a short intro to survival models to the team. Here, the goal is to lay out the basics and the motivate the use of survival analysis.
 Part II covers the Kaplan-Meier Estimator and Part II focuses on the Cox Proportional Hazards Model.
@@ -74,7 +71,7 @@ Let's define some key terms that will be useful for our models:
 4. **Hazard Function**
    - Let $h(t)$ be the hazard function that provides us with "the instantaneous potential per unit time [rate not probability] for the event to occur, given that the individual has survived up to time t" (Kleinbaum and Klein, 2012): 
   
-   - We can imagine the nominator $P(t \leq T \leq t + \Delta t | T > t)$ as the probability that the event happens to the object of study in the interval $[t, t + \Delta t]$ conditional on survival till time $t$.
+   - We can imagine the nominator as the probability that the event happens to the object of study in the interval $\left[t, t + \Delta t \right]$ conditional on survival till time $t$.
    - The hazard function cannot be negative $h(t) \geq 0$ and has not upper bound.
 
 Now, the survivor function and the hazard function have a clearly defined relationship - they can be derived from each other. This is generally expressed with these formulaes:
