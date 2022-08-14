@@ -42,15 +42,8 @@ Let's define some key terms that will be useful for our models:
    - Let $T$ be a nonnegative ($T \leq 0$) random variable (RV) that represents the survival time of the object of study and let $t$ denote the specific value for $T$.
 
 2. **Censorship**
-   - Let 
+   - Let $d = (0, 1)$ denote the RV whether the observation has been censored (=0) or not (=1).
   
-  $d =\begin{cases}
-      0, & \text{if censored} \\
-      1, & \text{if event} \
-    \end{cases}$
-    
-    denote the RV whether the observation has been censored or not.
-
 3. **Survivor Function**
    - Let $S(t)$ be the survivor function that displays the probability of the object of study surviving longer than time $t$ ($P(T>t)$).
      Theoretically the curve would look like below (Kleinbaum, Klein):
@@ -71,7 +64,7 @@ Let's define some key terms that will be useful for our models:
 4. **Hazard Function**
    - Let $h(t)$ be the hazard function that provides us with "the instantaneous potential per unit time [rate not probability] for the event to occur, given that the individual has survived up to time t" (Kleinbaum and Klein, 2012): 
   
-   - We can imagine the nominator as the probability that the event happens to the object of study in the interval $\left[t, t + \Delta t \right]$ conditional on survival till time $t$.
+   - We can imagine the nominator $P(t \leq T \leq t + \Delta t \vert T > t)$ as the probability that the event happens to the object of study in the interval $\left[t, t + \Delta t \right]$ conditional on survival till time $t$.
    - The hazard function cannot be negative $h(t) \geq 0$ and has not upper bound.
 
 Now, the survivor function and the hazard function have a clearly defined relationship - they can be derived from each other. This is generally expressed with these formulaes:
