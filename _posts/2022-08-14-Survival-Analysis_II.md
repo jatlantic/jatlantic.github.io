@@ -55,7 +55,7 @@ fig = px.line(new, x='time', y='patient',color='patient', title='Survival Time o
 for r,col in new.iterrows():  
     fig.add_shape(type="line", x0=new.start[r], x1=new.end[r],y0=new.index[r],y1=new.patient[r], line_width=2, line_dash="dash", line_color="blue")
 fig
-{% endhighlight}
+{% endhighlight %}
 
 Now, we create a new dataframe that contains a sorted list of the number of deaths and the number of people at risk over time. 
 
@@ -79,7 +79,7 @@ def KM():
 
    dff['surv'] = (1-dff.hazard).cumprod()
    return dff
-{% endhighlight}
+{% endhighlight %}
 
 Now, we plot the the results with Plotly Express and compare with the *lifelines* results.
 
@@ -91,7 +91,7 @@ kmf.fit(df.time, df.death)
 est = kmf.survival_function_
 est = est.reset_index()
 fig2 = px.line(est, x='timeline',  y='KM_estimate', title='Kaplan Meier Survival Function (lifelines)')Function (lifelines)')
-{% endhighlight}
+{% endhighlight %}
 
 And voila the curves are actually the same.
 
