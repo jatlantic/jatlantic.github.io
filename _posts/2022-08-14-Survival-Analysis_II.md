@@ -61,25 +61,22 @@ Now, we create a new dataframe that contains a sorted list of the number of deat
 
 {% highlight python %}
 def KM():
-   # get all time intervals sorted
    ts = df.time.unique().sort()
-   # create column with number of patients at risk at each time interval
    at_risk = pd.Series(0, index=ts)
    for t in ts:
       k = (t <= df['end']) # true false if time t is below or equal end time
       at_risk[t] = k.sum() # sum trues to get all cancer patients by duration
     
-   # create column with time intervals as index
    d = pd.Series(0, index=ts)
-   # count number of patients dying at each time interval
+
    for t in ts:
       k = (df['death'] == 1) & (t == df['end'])
       d[t] = k.sum()
       dff = pd.DataFrame(dict(death=d, 
             at_risk=at_risk), index=ts)
-   # calculate the hazard
+
    dff['hazard'] = dff.death/dff.at_risk
-   # calculate the survivor function
+
    dff['surv'] = (1-dff.hazard).cumprod()
    return dff
 {% endhighlight}
