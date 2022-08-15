@@ -55,13 +55,11 @@ fig = px.line(new, x='time', y='patient',color='patient', title='Survival Time o
 for r,col in new.iterrows():  
     fig.add_shape(type="line", x0=new.start[r], x1=new.end[r],y0=new.index[r],y1=new.patient[r], line_width=2, line_dash="dash", line_color="blue")
 fig
-
 {% endhighlight}
 
 Now, we create a new dataframe that contains a sorted list of the number of deaths and the number of people at risk over time. 
 
 {% highlight python %}
-
 def KM():
    # get all time intervals sorted
    ts = df.time.unique().sort()
@@ -84,14 +82,11 @@ def KM():
    # calculate the survivor function
    dff['surv'] = (1-dff.hazard).cumprod()
    return dff
-
-
 {% endhighlight}
 
 Now, we plot the the results with Plotly Express and compare with the *lifelines* results.
 
 {% highlight python %}
-
 fig1 = px.line(dff, x='index',  y='surv', title='Kaplan Meier Survival Function', labels={'surv':'KM_estimate', 'index':'timeline'})
 
 kmf = KaplanMeierFitter()
@@ -99,10 +94,24 @@ kmf.fit(df.time, df.death)
 est = kmf.survival_function_
 est = est.reset_index()
 fig2 = px.line(est, x='timeline',  y='KM_estimate', title='Kaplan Meier Survival Function (lifelines)')Function (lifelines)')
-
 {% endhighlight}
 
+And voila the curves are actually the same.
+
+<p align="center">
+  <img  align="center" alt="rightcensoring" src="/assets/surv1.png" width="70%" /> 
+</p>
+
+<p align="center">
+  <img  align="center" alt="rightcensoring" src="/assets/surv2.png" width="70%" /> 
+</p>
+
+
 ## Confidence Intervals - Greenwood's Formula
+
+Now it is time to actually look at the estimator from more statistical perspective - what are the confidence intervals of the estimator?
+
+
 
 ## Log-Rank Test
 
