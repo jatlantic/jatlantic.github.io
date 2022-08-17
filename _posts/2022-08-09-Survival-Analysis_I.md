@@ -7,7 +7,7 @@ use_math: true
 ---
 
 I recently gave a short intro to survival models to the team. Here, the goal is to lay out the basics and the motivate the use of survival analysis.
-Part II covers the Kaplan-Meier Estimator and Part III focuses on the Cox Proportional Hazards Model.
+[Part II]({{ site.baseurl }}{% post_url 2022-08-14-Survival-Analysis_II %}) covers the Kaplan-Meier Estimator and Part III focuses on the Cox Proportional Hazards Model.
 
 ## Motivation & Goals
 1. In many situations we would like to model the first time an event happens (time-to-event data). This could be the failure of a machine, the death of a cancer patient or the cancellation of a subscription.
@@ -63,6 +63,8 @@ Let's define some key terms that will be useful for our models:
 
 4. **Hazard Function**
    - Let $h(t)$ be the hazard function that provides us with "the instantaneous potential per unit time [rate not probability] for the event to occur, given that the individual has survived up to time t" (Kleinbaum and Klein, 2012): 
+
+   $\begin{aligned} h(t) =  \lim_{\Delta t \rightarrow 0 }  \frac{Pr( t \le T \le t + \Delta t \vert T > t)}{\Delta t} \end{aligned}$
   
    - We can imagine the nominator $P(t \leq T \leq t + \Delta t \vert T > t)$ as the probability that the event happens to the object of study in the interval $\left[t, t + \Delta t \right]$ conditional on survival till time $t$.
    - The hazard function cannot be negative $h(t) \geq 0$ and has not upper bound.
