@@ -141,7 +141,7 @@ and the KM estimator
 $\hat{S}(t)  = \prod_{t_i\leq t} (1 - \frac{d_i}{n_i})$
 
 
-All details and derivation can be found ![here](https://www.math.wustl.edu/%7Esawyer/handouts/greenwood.pdf).
+All details and derivation can be found ![https://www.math.wustl.edu/%7Esawyer/handouts/greenwood.pdf](here).
 
 Plotting the survivor curve with the confidence interval using the above formula looks like this:
 
