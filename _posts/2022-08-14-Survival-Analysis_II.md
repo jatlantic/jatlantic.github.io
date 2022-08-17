@@ -11,6 +11,8 @@ This post builds on the survival analysis introduction and delves deeper into th
 
 ## Motivation & Goals
 
+We would like to obtain a non-parametric estimation of the survival probability over time. In addition, we would like to be able to compare the resulting survival curves with each other to determine, for example, which treatment is more effective.
+
 ## The Kaplan-Meier Estimator
 
 The KM estimator is expressed as
@@ -112,11 +114,11 @@ fig2
 And voila the curves are actually the same.
 
 <p align="center">
-  <img  align="center" alt="rightcensoring" src="/assets/images/surv1.png" width="85%" /> 
+  <img  align="center" alt="rightcensoring" src="/assets/images/surv1.png" width="90%" /> 
 </p>
 
 <p align="center">
-  <img  align="center" alt="rightcensoring" src="/assets/images/surv2.png" width="85%" /> 
+  <img  align="center" alt="rightcensoring" src="/assets/images/surv2.png" width="90%" /> 
 </p>
 
 
@@ -178,7 +180,7 @@ fig.show()
 {% endhighlight %}
 
 <p align="center">
-  <img  align="center" alt="rightcensoring" src="/assets/images/CI_surv.png" width="85%" /> 
+  <img  align="center" alt="rightcensoring" src="/assets/images/CI_surv.png" width="90%" /> 
 </p>
 
 ## Log-Rank Test
@@ -237,7 +239,7 @@ fig.show()
 {% endhighlight %}
 
 <p align="center">
-  <img  align="center" alt="rightcensoring" src="/assets/images/comp_surv.png" width="85%" /> 
+  <img  align="center" alt="rightcensoring" src="/assets/images/comp_surv.png" width="90%" /> 
 </p>
 
 {% highlight python %}
@@ -250,6 +252,7 @@ In our case, the null hypothesis can be rejected and we would argue that there i
 For completeness it shall be mentioned that a variety of tests to compare the survivor curves exist: Wilcoxon, Tarone-Ware, Peto, and Flemington-Harrington. These tests enable us putting a stronger weight at certain timesteps which may be appropiate when we believe that the treatment exposure is stronger at a certain failure time, for example at the beginning of the study.
 
 
+You can get the [notebook here](https://github.com/jatlantic/jatlantic.github.io/blob/main/notebooks/Kaplan_Meier_Estimator_14.08.22.ipynb).
 
 ## Sources
 
