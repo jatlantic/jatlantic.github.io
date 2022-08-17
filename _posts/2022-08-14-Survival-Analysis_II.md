@@ -27,7 +27,7 @@ It comes from applying the multiplication rule $P(A \cap B) = P(B\vert A)P(A)$ r
 
 $S(t) = P(T>t) = \prod_{y_{(i)}\leq t} p_i$
 
-- $\hat{q_i} =\ frac{d_i}{n_i}$
+- $\hat{q_i} = \frac{d_i}{n_i}$
 - $\hat{p_i} = 1-\hat{q_i}= 1 - \frac{d_i}{n_i} = \left[ \frac{n_i-d_i}{n_i} \right]$
 
 If we would observe no censoring, we could just take the empirical estimator instead.
@@ -112,11 +112,11 @@ fig2
 And voila the curves are actually the same.
 
 <p align="center">
-  <img  align="center" alt="rightcensoring" src="/assets/images/surv1.png" width="70%" /> 
+  <img  align="center" alt="rightcensoring" src="/assets/images/surv1.png" width="85%" /> 
 </p>
 
 <p align="center">
-  <img  align="center" alt="rightcensoring" src="/assets/images/surv2.png" width="70%" /> 
+  <img  align="center" alt="rightcensoring" src="/assets/images/surv2.png" width="85%" /> 
 </p>
 
 
@@ -178,7 +178,7 @@ fig.show()
 {% endhighlight %}
 
 <p align="center">
-  <img  align="center" alt="rightcensoring" src="/assets/images/CI_surv.png" width="70%" /> 
+  <img  align="center" alt="rightcensoring" src="/assets/images/CI_surv.png" width="85%" /> 
 </p>
 
 ## Log-Rank Test
@@ -196,7 +196,7 @@ at the different failure times $f$. The first part of the equation represents th
 An example of the calculation of the variance from Kleinbaum and Klein (2012) for two groups would be the following:
 $\sqrt{\sum_{i=1}^k Var(O_i-E_i)} = \sqrt{\sum_{i=j} \frac{n_{1f} n_{2f}(m_{1f}+m_{2f})(n_{1f}+n_{2f} -m_{1f} -m_{2f})}{(n_{1f} + n_{2f})^2 (n_{1f}+n_{2f} -1)}}$
 
-This allows us now to test the $H_0$ that there is no difference between the survival curves. The log-rank statistic follows the Chi-square distribution ($\approx \chi^2) with one degree of freedom under null hypothesis.
+This allows us now to test the $H_0$ that there is no difference between the survival curves. The log-rank statistic follows the Chi-square distribution ($\approx \chi^2$) with one degree of freedom under null hypothesis.
 
 Enough of the theory, let's look at a code example. We create two groups using a random number generator and compare them
 
@@ -237,7 +237,7 @@ fig.show()
 {% endhighlight %}
 
 <p align="center">
-  <img  align="center" alt="rightcensoring" src="/assets/images/CI_surv.png" width="70%" /> 
+  <img  align="center" alt="rightcensoring" src="/assets/images/comp_surv.png" width="85%" /> 
 </p>
 
 {% highlight python %}
@@ -247,7 +247,7 @@ results.print_summary()
 
 In our case, the null hypothesis can be rejected and we would argue that there is a significant difference between the two groups. Since a random number generator has been used, the results for you running the code might be different.
 
-For completeness it shall be mentioned that a variety of tests to compare the survivor curves exist: Wilcoxon, Tarone-Ware, Peto, and Flemington-Harrington. These tests enable us putting a stronger weight at certain timesteps which may be appropiate when we believe that the treatment exposure is stronger at a certain failure time, for example at the beginning 
+For completeness it shall be mentioned that a variety of tests to compare the survivor curves exist: Wilcoxon, Tarone-Ware, Peto, and Flemington-Harrington. These tests enable us putting a stronger weight at certain timesteps which may be appropiate when we believe that the treatment exposure is stronger at a certain failure time, for example at the beginning of the study.
 
 
 

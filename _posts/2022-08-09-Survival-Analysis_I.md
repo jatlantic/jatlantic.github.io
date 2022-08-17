@@ -64,7 +64,7 @@ Let's define some key terms that will be useful for our models:
 4. **Hazard Function**
    - Let $h(t)$ be the hazard function that provides us with "the instantaneous potential per unit time [rate not probability] for the event to occur, given that the individual has survived up to time t" (Kleinbaum and Klein, 2012): 
 
-   $\begin{aligned} h(t) =  \lim_{\Delta t \rightarrow 0 }  \frac{Pr( t \le T \le t + \Delta t \vert T > t)}{\Delta t} \end{aligned}$
+      $\begin{aligned} h(t) =  \lim_{\Delta t \rightarrow 0 }  \frac{Pr( t \le T \le t + \Delta t \vert T > t)}{\Delta t} \end{aligned}$
   
    - We can imagine the nominator $P(t \leq T \leq t + \Delta t \vert T > t)$ as the probability that the event happens to the object of study in the interval $\left[t, t + \Delta t \right]$ conditional on survival till time $t$.
    - The hazard function cannot be negative $h(t) \geq 0$ and has not upper bound.
@@ -81,6 +81,7 @@ h(t) = -\left[ \frac{dS(t)/dt}{s(t)}\right]
 
 
 All of the above is neatly summarized in a diagram from the [lifelines](https://lifelines.readthedocs.io) package:
+
 <p align="center">
 <img src="https://lifelines.readthedocs.io/en/latest/_images/map.png" width=400
      alt="surv_funcs map"
