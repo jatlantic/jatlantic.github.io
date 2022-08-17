@@ -132,7 +132,9 @@ $\exp(-\exp(c_{+}(t))) < S(t) < \exp(-\exp(c_{-}(t)))$
 
 where
 
-$c_{\pm} = \log(-\log)\hat{S}(t)) \pm z_{\alpha/2}\sqrt{\hat{V}} $
+$c_{\pm} = \log(-\log)\hat{S}(t)) \pm z_{\alpha/2}\sqrt{\hat{V}}$
+
+and 
 
 $\hat{V} = \frac{1}{(\log \hat{S}(t))^2} \sum_{t_i\leq t} \frac{d_i}{n_i(n_i-d_i)}$
 
@@ -141,7 +143,7 @@ and the KM estimator
 $\hat{S}(t)  = \prod_{t_i\leq t} (1 - \frac{d_i}{n_i})$
 
 
-All details and derivation can be found ![https://www.math.wustl.edu/%7Esawyer/handouts/greenwood.pdf](here).
+All details and derivation can be found [here](https://www.math.wustl.edu/%7Esawyer/handouts/greenwood.pdf).
 
 Plotting the survivor curve with the confidence interval using the above formula looks like this:
 
