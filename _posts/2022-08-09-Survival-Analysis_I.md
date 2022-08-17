@@ -6,7 +6,7 @@ comments: true
 use_math: true
 ---
 
-I recently gave a short intro to survival models to the team. Here, the goal is to lay out the basics and the motivate the use of survival analysis.
+I recently gave a short intro of survival models to the team. Here, the goal is to lay out the basics and the motivate the use of survival analysis.
 [Part II]({{ site.baseurl }}{% post_url 2022-08-14-Survival-Analysis_II %}) covers the Kaplan-Meier Estimator and Part III focuses on the Cox Proportional Hazards Model.
 
 ## Motivation & Goals

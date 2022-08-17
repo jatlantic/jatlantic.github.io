@@ -20,14 +20,14 @@ The KM estimator is expressed as
 $\begin{aligned} \hat{S}(t) = \prod_{y_{(i)}\leq t} \hat{p_i} = \prod_{y_{(i)}\leq t} \left[ \frac{n_i -d_i}{n_i}\right] 
 = \prod_{i = 1}^{k} \left[ \frac{n_i -d_i}{n_i}\right] \end{aligned}$ where $y_{(k)} \leq t < y_{(k+1)}$.
 
-- $n_i$ describes that number of people that are alive and that have not been censored just prior to time $t$ ($=y_{(i)}$).
+- $n_i$ describes the number of people that are alive and that have not been censored just prior to time $t$ ($=y_{(i)}$).
 - $d_i$ describes the number of people that died at $y_{(i)}$.
 
 Now, where does this formula actually come from?
 
-It comes from applying the multiplication rule $P(A \cap B) = P(B\vert A)P(A)$ repeatedly. This leads us to express the survivor function as
+It comes from applying the multiplication rule $P(A \cap B) = P(B\vert A)P(A)$ repeatedly. This leads us to express the survivor function  or the probability of survival as
 
-$S(t) = P(T>t) = \prod_{y_{(i)}\leq t} p_i$
+$S(t) = P(T>t) = \prod_{y_{(i)}\leq t} \hat{p_i}$
 
 - $\hat{q_i} = \frac{d_i}{n_i}$
 - $\hat{p_i} = 1-\hat{q_i}= 1 - \frac{d_i}{n_i} = \left[ \frac{n_i-d_i}{n_i} \right]$
