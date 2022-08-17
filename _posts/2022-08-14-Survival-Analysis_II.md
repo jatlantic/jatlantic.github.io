@@ -259,4 +259,5 @@ You can get the [notebook here](https://github.com/jatlantic/jatlantic.github.io
 1. Kleinbaum, D. G. & Klein, M. Survival analysis: a self-learning text. (Springer, 2012).
 2. Tableman, M. Survival Analysis Using S R*. (2016).
 3. Rodriguez, G. GR’s Website. https://data.princeton.edu/wws509/notes/c7s1.
-4. https://www.math.wustl.edu/~sawyer/handouts/greenwood.pdf
+4. Sawyer, S. The Greenwood and Exponential Greenwood Confidence Intervals in Survival Analysis. (2003).
+
