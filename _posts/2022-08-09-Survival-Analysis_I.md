@@ -29,7 +29,7 @@ The main challenge and the reason why survival models are different from, say em
 Right censoring is most commonly encountered and we will focus on right censoring for the remainder of this series. In medical studies, right censoring can occur when a patient moves away (loss to follow-up), the patient stops treatment (drop out) or the termination of the study. See picture below (Kleinbaum, Klein):
 
 <p align="center">
-  <img  align="center" alt="rightcensoring" src="/assets/2022-08-10_right_censoring.png" width="70%" /> 
+  <img  align="center" alt="rightcensoring" src="/assets/images/2022-08-10_right_censoring.png" width="70%" /> 
    <!-- <figcaption>Right censoring (Kleinbaum, Klein)</figcaption> -->
 </p>
 
@@ -49,7 +49,7 @@ Let's define some key terms that will be useful for our models:
      Theoretically the curve would look like below (Kleinbaum, Klein):
 
 <p align="center">
-  <img alt="Survfunc1" src="/assets/2022-08-10_surv_theoretical.png" width="70%" />
+  <img alt="Survfunc1" src="/assets/images/2022-08-10_surv_theoretical.png" width="70%" />
   <!--<figcaption>Survivor Function Theoretical (Kleinbaum, Klein)</figcaption>-->
 </p>
 
@@ -57,7 +57,7 @@ Let's define some key terms that will be useful for our models:
   - In practice the survivor function takes the form of steps as can be seen below (Kleinbaum, Klein):
   
 <p align="center">
-  <img alt="Survfunc2" src="/assets/2022-08-10_surv_practical.png" width="70%" /> 
+  <img alt="Survfunc2" src="/assets/images/2022-08-10_surv_practical.png" width="70%" /> 
   <!--  <figcaption>Survivor Function Practical (Kleinbaum, Klein)</figcaption>-->
 </p>
 
