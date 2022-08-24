@@ -117,10 +117,12 @@ Having estimated the coefficients, we would like to know whether these are stati
 
 Moreover, we can also consider the likelihood ratio (LR) statistic. This allows us to test for the significance of a coefficient by subtracting the LR statistics of the two models (reduced vs. full model) whose result is chi-squared distributed and enables us to obtain the p-value.
 
+B
+
 ## Hazard Ratio
 Another question that you might have is how to read and interpret these coefficients? What is commonly done is to look at the **hazard ratio (HR)** where we compare the coefficients and $X$ values of one individual to another individual or the baseline. Mathematically, this would like so:
 
-$\hat{HR} = \frac{\hat{h_0}(t)\exp{\sum_{i=1}^p\hat{\beta_i} X_i^*}}{\hat{h_0}(t)exp{\sum_{i=1}^p\hat{\beta_i} X_i}}=\exp({\sum_{i=1}^p\hat{\beta_i} (X_i^*-X_i))}$
+$\hat{HR} = \frac{\hat{h_0}(t)\exp{\sum_{i=1}^p\hat{\beta_i} X_i^*}}{\hat{h_0}(t)exp{\sum_{i=1}^p\hat{\beta_i} X_i}}=\exp{(\sum_{i=1}^p\hat{\beta_i} (X_i^*-X_i))}$
 
 ## Assumptions
 What are the underlying assumptions of this model? One of the key assumptions in the Cox PH model holds that the HR is constant over time. In other words, we say that $\frac{\hat{h}(t,X^*)}{\hat{h}(t,X)}= \hat{\theta}$ is constant. This asks for preliminary anlyses and contextual thinking to verify whether the Cox PH model is the right one to use for the case at hand. One option could be to just compare different Kaplan-Meier curves as explained in previous posts or to extent the Cox PH model by a time dependent variable.
