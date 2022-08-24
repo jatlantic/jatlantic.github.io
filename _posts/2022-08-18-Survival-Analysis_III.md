@@ -12,7 +12,6 @@ This post builds on the [Survival Analysis I - Introduction]({{ site.baseurl }}{
 ## Motivation & Goals
 
 
-
 ## The Cox Proportional Hazards Model
 
 The Cox PH model can be expressed in the following form (Kleinbaum, Klein, 2012):
@@ -44,7 +43,7 @@ We can easily see that $h_0(t)$ cancels out which allows us to generalize the ab
 
 $PL(\beta)=\prod_{i:C_i=1}\frac{h(Y_i \vert X_i)}{\sum_{j:Y_j\geq Y_j}\exp{h(Y_i\vert X_j)}}$
 
-which together with the Cox assumptions turns into [^1]:
+which together with the Cox assumptions turns into [1]:
 
 $PL(\beta)=\prod_{i:C_i=1}\frac{\exp{(X_i \beta)}}{\sum_{j:Y_j\geq Y_j}\exp{(X_j \beta)}}$
 
@@ -122,7 +121,7 @@ B
 ## Hazard Ratio
 Another question that you might have is how to read and interpret these coefficients? What is commonly done is to look at the **hazard ratio (HR)** where we compare the coefficients and $X$ values of one individual to another individual or the baseline. Mathematically, this would like so:
 
-$\hat{HR} = \frac{\hat{h_0}(t)\exp{\sum_{i=1}^p\hat{\beta_i} X_i^*}}{\hat{h_0}(t)exp{\sum_{i=1}^p\hat{\beta_i} X_i}}=\exp{(\sum_{i=1}^p\hat{\beta_i} (X_i^*-X_i))}$
+$\hat{\text{HR}} = \frac{\hat{h_0}(t) \exp{\sum_{i=1}^p\hat{\beta_i} X_i^*}}{\hat{h_0}(t)exp{\sum_{i=1}^p\hat{\beta_i} X_i}} = \exp{(\sum_{i=1}^p \hat{\beta_i} (X_i^*-X_i))}$
 
 ## Assumptions
 What are the underlying assumptions of this model? One of the key assumptions in the Cox PH model holds that the HR is constant over time. In other words, we say that $\frac{\hat{h}(t,X^*)}{\hat{h}(t,X)}= \hat{\theta}$ is constant. This asks for preliminary anlyses and contextual thinking to verify whether the Cox PH model is the right one to use for the case at hand. One option could be to just compare different Kaplan-Meier curves as explained in previous posts or to extent the Cox PH model by a time dependent variable.
@@ -137,10 +136,12 @@ You can get the [notebook here](https://github.com/jatlantic/jatlantic.github.io
 
 ## Sources
 
-[^1] Boeva, V. Machine Learning on Genomics. (2022).
-2. Kleinbaum, D. G. & Klein, M. Survival analysis: a self-learning text. (Springer, 2012).
-3. Tableman, M. Survival Analysis Using S R*. (2016).
+1. Boeva, V. Machine Learning on Genomics. (2022).
+2. Klein, J. P. & Moeschberger, M. L. Survival analysis: techniques for censored and truncated data. vol. 1230 (Springer, 2003).
+3. Kleinbaum, D. G. & Klein, M. Survival analysis: a self-learning text. (Springer, 2012).
 4. Ravinutala, S. [Survival models] Cox proportional hazard model. Sid Ravinutala https://sidravi1.github.io/blog/2021/10/11/cox-proportional-hazard-model (2021).
-5. Rodriguez, G. GR’s Website. https://data.princeton.edu/wws509/notes/c7s1.
-6. Sawyer, S. The Greenwood and Exponential Greenwood Confidence Intervals in Survival Analysis. (2003).
+5. Sawyer, S. The Greenwood and Exponential Greenwood Confidence Intervals in Survival Analysis. (2003).
+6. Rodriguez, G. GR’s Website. https://data.princeton.edu/wws509/notes/c7s1.
+7. Tableman, M. Survival Analysis Using S R*. (2016).
+
 
