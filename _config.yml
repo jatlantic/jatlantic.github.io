@@ -11,7 +11,7 @@ email: tbd
 markdown: kramdown
 permalink: /blog/:year/:month/:day/:title
 remote_theme: thelehhman/texture
-theme: texture-blue
+#theme: texture
 
 # Google Analytics
 google_analytics: False
