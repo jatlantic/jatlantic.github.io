@@ -30,37 +30,34 @@ Let's illustrate the maximum likelihood (ML) estimation with an example from Kle
 
 <table>
     <tr>
-        <td>\begin{table}[!ht]</td>
+        <td>Subject</td>
+        <td>Time</td>
+        <td>Status</td>
+        <td>Diabetes</td>
     </tr>
     <tr>
-        <td>    \centering</td>
+        <td>Alex</td>
+        <td>2</td>
+        <td>1</td>
+        <td>1</td>
     </tr>
     <tr>
-        <td>    \begin{tabular}{|l|l|l|l|}</td>
+        <td>Celine</td>
+        <td>3</td>
+        <td>1</td>
+        <td>0</td>
     </tr>
     <tr>
-        <td>    \hline</td>
+        <td>Dennis</td>
+        <td>5</td>
+        <td>0</td>
+        <td>0</td>
     </tr>
     <tr>
-        <td>        Subject &amp; Time &amp; Status &amp; Diabetes \\ \hline</td>
-    </tr>
-    <tr>
-        <td>        Alex &amp; 2 &amp; 1 &amp; 1 \\ \hline</td>
-    </tr>
-    <tr>
-        <td>        Celine &amp; 3 &amp; 1 &amp; 0 \\ \hline</td>
-    </tr>
-    <tr>
-        <td>        Dennis &amp; 5 &amp; 0 &amp; 0 \\ \hline</td>
-    </tr>
-    <tr>
-        <td>        Estelle &amp; 8 &amp; 1 &amp; 1 \\ \hline</td>
-    </tr>
-    <tr>
-        <td>    \end{tabular}</td>
-    </tr>
-    <tr>
-        <td>\end{table}</td>
+        <td>Estelle</td>
+        <td>8</td>
+        <td>1</td>
+        <td>1</td>
     </tr>
 </table>
 
