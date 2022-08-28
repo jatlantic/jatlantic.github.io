@@ -28,12 +28,17 @@ The $\beta$ coefficients are obtained by maximizing the "partial" log likelihood
 
 Let's illustrate the maximum likelihood (ML) estimation with an example from Klein, Kleinbaum (2012): 
 
-| Subject | Time | Status | Diabetes |
-|---------|------|--------|----------|
-| Alex    | 2    | 1      | 1        |
-| Celine  | 3    | 1      | 0        |
-| Dennis  | 5    | 0      | 0        |
-| Estelle | 8    | 1      | 1        |
+$\begin{table}[!ht]
+    \centering
+    \begin{tabular}{|l|l|l|l|}
+    \hline
+        Subject & Time & Status & Diabetes \\ \hline
+        Alex & 2 & 1 & 1 \\ \hline
+        Celine & 3 & 1 & 0 \\ \hline
+        Dennis & 5 & 0 & 0 \\ \hline
+        Estelle & 8 & 1 & 1 \\ \hline
+    \end{tabular}
+\end{table}$
 
 We apply the Cox PH model where $h(t) = h_0(t)\exp{»beta_1DIABETES}. With the above table the exponent will be zero for Celine and Dennis. The Cox likelihood will be the multiplication of the likelihood at each failure time step:
 
@@ -45,7 +50,7 @@ $PL(\beta)=\prod_{i:C_i=1}\frac{h(Y_i \vert X_i)}{\sum_{j:Y_j\geq Y_j}\exp{h(Y_i
 
 which together with the Cox assumptions turns into [1]:
 
-$PL(\beta)=\prod_{i:C_i=1}\frac{\exp{(X_i \beta)}}{\sum_{j:Y_j\geq Y_j}\exp{(X_j \beta)}}$
+$\begin{equation} PL(\beta)=\prod_{i:C_i=1}\frac{\exp{(X_i \beta)}}{\sum_{j:Y_j\geq Y_j}\exp{(X_j \beta)}} \end{equation}$
 
 where 
 
@@ -58,7 +63,7 @@ where
 Taking the log gives us:
 
 
-$logPL(\beta)=\sum_{i:C_i=1}\left[ \log{\exp{(X_i \beta)}}- \log \left(\sum_{j:Y_j\geq Y_j}\exp{(X_j \beta)}\right)\right]$
+$logPL(\beta)=\sum_{i:C_i=1}\left[ \exp{(X_i \beta)}- \log \left(\sum_{j:Y_j\geq Y_j}\exp{(X_j \beta)}\right)\right]$
 
 If we add a minus to the beginning of the above equation we obtain the Cox PH loss function that we would like to minimize. Now instead of taking the derivative with respect to $\beta$ and set it to zero, we'll use JAX here (following the post by Sidravi). First, we note that the above can only be applied when no ties are present that is there is not more than one event occurring at the same time. If this is the case *Breslow*'s or *Efron*'s method can be used.
 So to conform with that assumption we prepare the data accordingly:
@@ -81,33 +86,35 @@ rossi = rossi.drop_duplicates('week', keep='first')
 rossi = rossi.sort_values(by='week',ascending=True)
 {% endhighlight %}
 
-Now we calculate the riskset:
+Now we create a helper matrix for summing the correct individuals in the second part of the above formula:
 
 {% highlight python %}
-# calculate riskset
-rossi = rossi.sort_values(by='week',ascending=True)
-# calculate riskset, easy with this dataset
-rossi['at_risk'] = np.arange(start=49,stop=0,step=-1)
+# calculate at risk helper matrix (i.e. riskset)
+# essential to capture the decreasing number of individuals at risk when taking the exp sums below.
+at_risk = np.triu(np.ones(rossi.shape[0]))
 {% endhighlight %}
 
 
 Here we code negative log likelihood function and minimize it:
 
 {% highlight python %}
-#code negative log likelihood function that we would like to minimize:
 @jax.jit
-def neglogp(betas, x = rossi[['fin', 'age', 'race', 'wexp', 'mar', 'paro', 'prio']].to_numpy(), riskset=rossi.at_risk.to_numpy(), observed=rossi.arrest.to_numpy()):
+def neglogp(betas, x = rossi[['fin', 'age', 'race', 'wexp', 'mar', 'paro', 'prio']].to_numpy(), riskset=at_risk, observed=rossi.arrest.to_numpy()):
     betas_x = betas @ x.T
+    # now we want to sum in decreasing order of elements
+    # first all are in the risk set and then every time step one less
+    # this is well achieved with the np.triu function
+    riskset_beta = betas_x * riskset
     # Compute the log of the sum of exponentials of input elements.
-    ll_matrix = (betas_x - jsp.special.logsumexp(betas_x, b = riskset, axis=0))
-    return -(observed * ll_matrix).sum()
-
-dlike = grad(neglogp)
-dlike2 = hessian(neglogp)
-res = minimize(neglogp, np.ones(7), method='Newton-CG', jac=dlike, hess=dlike2)
+    # b is the weighting factor for each input element
+    # i.e. we sum only over the elements of the riskset, 
+    # in other words it allows us to get rid of the values exp(0) = 1 that #are created without the weight.
+    res_vec = (betas_x - jsp.special.logsumexp(riskset_beta, b = riskset, axis=1))
+    # we sum the result on ly for those individuals where the event occurred.
+    return -(observed * res_vec).sum()
 {% endhighlight %}
 
-To be very honest, if we compare that result with that of the *lifelines* package they are not the same. This could be due to the fact lifelines used *Breslow*'s method instead. If there is time, I will look further into this. 
+The results are the same as can be verified when running the [notebook here](https://github.com/jatlantic/jatlantic.github.io/blob/main/notebooks/Cox_PH_Model_18.08.22.ipynb).
 
 
 ## Statistical Inference
@@ -134,8 +141,9 @@ You can get the [notebook here](https://github.com/jatlantic/jatlantic.github.io
 2. Klein, J. P. & Moeschberger, M. L. Survival analysis: techniques for censored and truncated data. vol. 1230 (Springer, 2003).
 3. Kleinbaum, D. G. & Klein, M. Survival analysis: a self-learning text. (Springer, 2012).
 4. Ravinutala, S. [Survival models] Cox proportional hazard model. Sid Ravinutala https://sidravi1.github.io/blog/2021/10/11/cox-proportional-hazard-model (2021).
-5. Sawyer, S. The Greenwood and Exponential Greenwood Confidence Intervals in Survival Analysis. (2003).
-6. Rodriguez, G. GR’s Website. https://data.princeton.edu/wws509/notes/c7s1.
-7. Tableman, M. Survival Analysis Using S R*. (2016).
+5. Rossi, P.H., R.A. Berk, and K.J. Lenihan (1980). Money, Work, and Crime: Some Experimental Results. New York: Academic Press. John Fox, Marilia Sa Carvalho (2012). The RcmdrPlugin.survival Package: Extending the R Commander Interface to Survival Analysis. Journal of Statistical Software, 49(7), 1-32.
+6. Sawyer, S. The Greenwood and Exponential Greenwood Confidence Intervals in Survival Analysis. (2003).
+7. Rodriguez, G. GR’s Website. https://data.princeton.edu/wws509/notes/c7s1.
+8. Tableman, M. Survival Analysis Using S R*. (2016).
 
 
