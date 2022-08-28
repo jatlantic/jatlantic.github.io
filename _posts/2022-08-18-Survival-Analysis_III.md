@@ -28,19 +28,43 @@ The $\beta$ coefficients are obtained by maximizing the "partial" log likelihood
 
 Let's illustrate the maximum likelihood (ML) estimation with an example from Klein, Kleinbaum (2012): 
 
-$\begin{table}[!ht]
-    \centering
-    \begin{tabular}{|l|l|l|l|}
-    \hline
-        Subject & Time & Status & Diabetes \\ \hline
-        Alex & 2 & 1 & 1 \\ \hline
-        Celine & 3 & 1 & 0 \\ \hline
-        Dennis & 5 & 0 & 0 \\ \hline
-        Estelle & 8 & 1 & 1 \\ \hline
-    \end{tabular}
-\end{table}$
+<table>
+    <tr>
+        <td>\begin{table}[!ht]</td>
+    </tr>
+    <tr>
+        <td>    \centering</td>
+    </tr>
+    <tr>
+        <td>    \begin{tabular}{|l|l|l|l|}</td>
+    </tr>
+    <tr>
+        <td>    \hline</td>
+    </tr>
+    <tr>
+        <td>        Subject &amp; Time &amp; Status &amp; Diabetes \\ \hline</td>
+    </tr>
+    <tr>
+        <td>        Alex &amp; 2 &amp; 1 &amp; 1 \\ \hline</td>
+    </tr>
+    <tr>
+        <td>        Celine &amp; 3 &amp; 1 &amp; 0 \\ \hline</td>
+    </tr>
+    <tr>
+        <td>        Dennis &amp; 5 &amp; 0 &amp; 0 \\ \hline</td>
+    </tr>
+    <tr>
+        <td>        Estelle &amp; 8 &amp; 1 &amp; 1 \\ \hline</td>
+    </tr>
+    <tr>
+        <td>    \end{tabular}</td>
+    </tr>
+    <tr>
+        <td>\end{table}</td>
+    </tr>
+</table>
 
-We apply the Cox PH model where $h(t) = h_0(t)\exp{»beta_1DIABETES}. With the above table the exponent will be zero for Celine and Dennis. The Cox likelihood will be the multiplication of the likelihood at each failure time step:
+We apply the Cox PH model where $h(t) = h_0(t)\exp{»beta_1DIABETES}$. With the above table the exponent will be zero for Celine and Dennis. The Cox likelihood will be the multiplication of the likelihood at each failure time step:
 
 $L = \left[ \frac{h_0(t)e^{\beta_1}}{h_0(t)e^{\beta_1} + h_0(t)e^{0} + h_0(t)e^{0} + h_0(t)e^{\beta_1}} \right] \times \left[ \frac{h_0(t)e^{0}}{h_0(t)e^{0} + h_0(t)e^{0}+ h_0(t)e^{\beta_1}}\right] \times \left[ \frac{h_0(t)e^{\beta_1}}{h_0(t)e^{\beta_1}}\right]$
 
