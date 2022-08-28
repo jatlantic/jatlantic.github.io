@@ -28,38 +28,42 @@ The $\beta$ coefficients are obtained by maximizing the "partial" log likelihood
 
 Let's illustrate the maximum likelihood (ML) estimation with an example from Klein, Kleinbaum (2012): 
 
-<table>
-    <tr>
-        <td>Subject</td>
-        <td>Time</td>
-        <td>Status</td>
-        <td>Diabetes</td>
-    </tr>
-    <tr>
-        <td>Alex</td>
-        <td>2</td>
-        <td>1</td>
-        <td>1</td>
-    </tr>
-    <tr>
-        <td>Celine</td>
-        <td>3</td>
-        <td>1</td>
-        <td>0</td>
-    </tr>
-    <tr>
-        <td>Dennis</td>
-        <td>5</td>
-        <td>0</td>
-        <td>0</td>
-    </tr>
-    <tr>
-        <td>Estelle</td>
-        <td>8</td>
-        <td>1</td>
-        <td>1</td>
-    </tr>
-</table>
+<div class="divTable">
+    <div class="thead">
+        <div class="row">
+            <div class="cell">Subject</td>
+            <div class="cell">Time</td>
+            <div class="cell">Status</td>
+            <div class="cell">Diabetes</td>
+        </div>
+    </div>
+    <div class="tbody">
+        <div class="row">
+            <div class="cell">Alex</td>
+            <div class="cell">2</td>
+            <div class="cell">1</td>
+            <div class="cell">1</td>
+        </div>
+        <div class="row">
+            <div class="cell">Celine</td>
+            <div class="cell">3</td>
+            <div class="cell">1</td>
+            <div class="cell">0</td>
+        </div>
+        <div class="row">
+            <div class="cell">Dennis</td>
+            <div class="cell">5</td>
+            <div class="cell">0</td>
+            <div class="cell">0</td>
+        </div>
+        <div class="row">
+            <div class="cell">Estelle</td>
+            <div class="cell">8</td>
+            <div class="cell">1</td>
+            <div class="cell">1</td>
+        </div>
+    </div>
+</div>
 
 We apply the Cox PH model where $h(t) = h_0(t)\exp{(\beta_1 \text{DIABETES})}$. With the above table the exponent will be zero for Celine and Dennis. The Cox likelihood will be the multiplication of the likelihood at each failure time step:
 

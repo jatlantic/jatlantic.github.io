@@ -10,12 +10,12 @@ The original post was supposed to be about gradient boosted decision trees. But 
 
 ## Introduction & Motivation
 
-As *scikit learn* puts it** decision trees (DTs)** are a "non-parametric supervised learning method used for classification and regression". One of the main advantages of decision trees it that we can understand and interpret them. One disadvantage is that the trees might be overfitting loosing generalizability. 
+As *scikit learn* puts it **decision trees (DTs)** are a "non-parametric supervised learning method used for classification and regression". One of the main advantages of decision trees it that we can understand and interpret them. One disadvantage is that the trees might be overfitting loosing generalizability. 
 
 The image below from the [numpy-ml package](https://numpy-ml.readthedocs.io/en/latest/) provides a high level overview on decision trees:
 
 <p align="center">
-  <img  align="center" alt="rightcensoring" src="/assets/images/decision_tree_intro.png" width="70%" /> 
+  <img  align="center" alt="rightcensoring" src="/assets/images/2022-08-25_decision_tree_intro.png" width="70%" /> 
    <!-- <figcaption>Right censoring (Kleinbaum, Klein)</figcaption> -->
 </p>
 

@@ -61,7 +61,7 @@
 }
 
 .texture-blue {
-    background-image: url('{{ site.baseurl }}/assets/textures/blue.jpg');
+    background-image: url('{{ site.baseurl }}/assets/textures/fblue.jpg');
 
     h2 {
         color: #ddd;
@@ -92,7 +92,7 @@
     }
 }
 
-.texture-red,
+.texture-blue,
 .texture-purple {
     h2 {
         color: #ccc;
