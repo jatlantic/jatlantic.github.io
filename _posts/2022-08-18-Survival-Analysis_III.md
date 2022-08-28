@@ -64,7 +64,7 @@ Let's illustrate the maximum likelihood (ML) estimation with an example from Kle
     </tr>
 </table>
 
-We apply the Cox PH model where $h(t) = h_0(t)\exp{»beta_1DIABETES}$. With the above table the exponent will be zero for Celine and Dennis. The Cox likelihood will be the multiplication of the likelihood at each failure time step:
+We apply the Cox PH model where $h(t) = h_0(t)\exp{(\beta_1 \text{DIABETES})}$. With the above table the exponent will be zero for Celine and Dennis. The Cox likelihood will be the multiplication of the likelihood at each failure time step:
 
 $L = \left[ \frac{h_0(t)e^{\beta_1}}{h_0(t)e^{\beta_1} + h_0(t)e^{0} + h_0(t)e^{0} + h_0(t)e^{\beta_1}} \right] \times \left[ \frac{h_0(t)e^{0}}{h_0(t)e^{0} + h_0(t)e^{0}+ h_0(t)e^{\beta_1}}\right] \times \left[ \frac{h_0(t)e^{\beta_1}}{h_0(t)e^{\beta_1}}\right]$
 
