@@ -22,7 +22,7 @@ $f_m(X) = b(X) + \eta w_1 g_1 + \ldots + \eta w_m g_m$
 In practice and as you will see below in the code the we start from an initial estimate which is $b(X)$. This estimate is often just the average of the given $Y$ values (see `MeanBaseEstimator()` in the code). With that in mind, we start to iteratively approximate the negative gradient of the loss function (in our example MSE) using the predictions of the previous model. 
 Let's have a look at observation $i$ only. The negative gradient would be:
 
-$g_i = - \left[\frac{\partial L(y_i, f(x_i))}{\partial f(x_i)} \right]_{f(x_i)=f_{m-1}(x_i)}$
+$g_i = - \left(\frac{dL(y_i, f(x_i))}{df(x_i)} \right)_{f(x_i)=f_{m-1}(x_i)}$
 
 Our goal would then be to find the weights $w$ and gradients $g$ that minimize the following loss function at each iteration $k$:
 
@@ -41,14 +41,6 @@ What are the disadvantages of GDBTs?
 
 - overfitting can be an issue (requires regularization)
 
-
-
-
-<p align="center">
-  <img  align="center" alt="rightcensoring" src="/assets/images/2022-08-25_decision_tree_intro.png" width="70%" /> 
-   <!-- <figcaption>Right censoring (Kleinbaum, Klein)</figcaption> -->
-</p>
-
 ## Evaluation Criteria
 
 As a first step and similar to the [decision trees]({{ site.baseurl }}{% post_url 2022-08-25-Decision_Trees %}) described in the previous post we define the loss function. In numpy-ml case these are mean squared error and cross entropy loss. For completeness I define them below:
@@ -57,7 +49,7 @@ As a first step and similar to the [decision trees]({{ site.baseurl }}{% post_ur
 $MSE = \frac{1}{n}\sum_{i=1}^n (yi-\hat{y}_i)^2$
 
 2. Cross Entropy Loss 
-$H(p,q) = -\sum p(x) \log q(x)
+$H(p,q) = -\sum p(x) \log q(x)$
 
 
 In [numpy-ml package](https://numpy-ml.readthedocs.io/en/latest/) these are coded a little bit more extensively. Let's have a brief look at it. Note that for the sake of simplicity I removed the `line_search()`
