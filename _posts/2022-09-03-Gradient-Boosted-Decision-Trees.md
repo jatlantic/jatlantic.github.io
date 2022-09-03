@@ -24,6 +24,8 @@ Let's have a look at observation $i$ only. The negative gradient would be:
 
 $g_i = - \left(\frac{dL(y_i, f(x_i))}{df(x_i)} \right)$
 
+where $f(x_i)=f_{m-1}(x_i)$.
+
 Our goal would then be to find the weights $w$ and gradients $g$ that minimize the following loss function at each iteration $k$:
 
 $w_k, g_k = \arg \min_{w_k, g_k} L(Y, f_{m-1}(X) + w_k g_k)$
@@ -192,13 +194,12 @@ t.fit(X,Y)
 t.predict(X)
 {% endhighlight %}
 
-You can find the [notebook here](https://github.com/jatlantic/jatlantic.github.io/blob/main/notebooks/Decision_Trees_25.08.22.ipynb).
+You can find the [notebook here](https://github.com/jatlantic/jatlantic.github.io/blob/main/notebooks/Gradient_Boosted_Decision_Trees_02.09.22.ipynb).
 Hope this was illustrative. 
 
 ## Sources
 
-1. Bourgin, D. numpy-ml. (2022).
-2. Breiman, L., Friedman, J. H., Olshen, R. A. & Stone, C. J. Classification and regression trees. Wadsworth. Inc. Monterey, California, USA (1984).
+1. Mwiti, D. Gradient Boosted Decision Trees [Guide]: a Conceptual Explanation. neptune.ai https://neptune.ai/blog/gradient-boosted-decision-trees-guide (2021).
+2. Bourgin, D. numpy-ml. (2022).
 3. Hastie, T., Tibshirani, R., Friedman, J. H. & Friedman, J. H. The elements of statistical learning: data mining, inference, and prediction. vol. 2 (Springer, 2009).
-
-from https://neptune.ai/blog/gradient-boosted-decision-trees-guide
+4. Breiman, L., Friedman, J. H., Olshen, R. A. & Stone, C. J. Classification and regression trees. Wadsworth. Inc. Monterey, California, USA (1984).
