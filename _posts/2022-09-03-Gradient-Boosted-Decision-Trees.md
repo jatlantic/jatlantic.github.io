@@ -103,64 +103,74 @@ class CrossEntropyLoss:
 Now, let's follow the [numpy-ml package](https://numpy-ml.readthedocs.io/en/latest/) step by step and evaluate the code bits. On a high level we have the *fit* and *predict* functions. The *fit* function learns on the data and the *predict* function gives us the predictions depending on the input data we provide it with. Let's start with the *fit()* function (for the continuous case) and with MSE loss only.
 
 {% highlight python %}
-    def fit(self, X, Y):
+def fit(self, X, Y):
         """
         Fit the gradient boosted decision trees on a dataset.
+        """
         # set loss function
         loss = MSELoss()
-
+        # if Y array has only one dimension then make sure to get array with two dimensions
+        # where the first one can be whatever fits and the secon one has to be 1.
         Y = Y.reshape(-1, 1) if len(Y.shape) == 1 else Y
-
         N, M = X.shape
+        # this is usually 1
         self.out_dims = Y.shape[1]
         # each iteration is one row of learners with the same length as the output y
+        # so basically matrix with n_iter rows and out_dims columns which is most often 1.
         self.learners = np.empty((self.n_iter, self.out_dims), dtype=object)
-
         # the same is valid for the weights
+        # as we have a weight for each learner
         self.weights = np.ones((self.n_iter, self.out_dims))
         # all but the first (i.e. zero positioned) row
         self.weights[1:, :] *= self.learning_rate
 
         # fit the base estimator
         Y_pred = np.zeros((N, self.out_dims))
-        for k in range(self.out_dims):
-            # this calls the MeanBaseEstimator() in the case of MSELoss
-            # or the ClassProbEstimator() in the case of CrossEntropyLoss
-            # here we consider only MSE loss
-            t = loss.base_estimator()
-            # in our case this takes the mean/avg of Y's column k
-            t.fit(X, Y[:, k])
-            # now we predict the values by putting the mean into each cell
-            Y_pred[:, k] += t.predict(X)
-            # the prediction is just the avg value
-            # and we add the vector of avg values to the zero row and k-th column
-            # verify shapes!!!
-            self.learners[0, k] = t
+        # this usually sets the first learner to the value of the base estimator
+        # for us this would be the average of the Y values
+        # removed k loop from original
+        
+        # this calls the MeanBaseEstimator() in the case of MSELoss
+        # or the ClassProbEstimator() in the case of CrossEntropyLoss
+        # here we consider only MSE loss
+        t = loss.base_estimator()
+        # in our case this takes the mean/avg of Y's column k
+        t.fit(X, Y[:, 0])
+        # now we predict the values by adding the vector of means
+        # onto the Y_pred column vector
+        Y_pred[:, 0] += t.predict(X)
+        # the prediction is just the avg value
+        # now we save the base estimator to the zeroth row and k-th column of the learners
+        # which contains one row for each iteration
+        self.learners[0, 0] = t
 
         # incrementally fit each learner on the negative gradient of the loss
         # wrt the previous fit (pseudo-residuals)
         for i in range(1, self.n_iter):
-            for k in range(self.out_dims):
-                y, y_pred = Y[:, k], Y_pred[:, k]
-                # use derivative of MSE loss to obtain negative gradient
-                neg_grad = -1 * loss.grad(y, y_pred)
+            # out dims is usually 1 so removed it 
 
-                # use MSE as the surrogate loss when fitting to negative gradients
-                t = DecisionTree(
-                    classifier=False, max_depth=self.max_depth, criterion="mse"
-                )
+            y, y_pred = Y[:, 0], Y_pred[:, 0]
+            # use derivative of MSE loss to obtain negative gradient
+            neg_grad = -1 * loss.grad(y, y_pred)
+            
+            # take decision tree discussed in previous post
+            # use MSE as the surrogate loss when fitting to negative gradients
+            t = DecisionTree(
+                classifier=False, max_depth=self.max_depth, criterion="mse"
+            )
 
-                # fit current learner to negative gradients
-                t.fit(X, neg_grad)
-                self.learners[i, k] = t
+            # fit current learner to negative gradients
+            t.fit(X, neg_grad)
+            # save trained learner for each iteration
+            self.learners[i, 0] = t
 
-                # compute step size and weight for the current learner
-                step = 1.0
-                h_pred = t.predict(X)
+            # compute step size and weight for the current learner
+            step = 1.0
+            h_pred = t.predict(X)
 
-                # update weights and our overall prediction for Y
-                self.weights[i, k] *= step
-                Y_pred[:, k] += self.weights[i, k] * h_pred
+            # update weights and our overall prediction for Y
+            self.weights[i, 0] *= step
+            Y_pred[:, 0] += self.weights[i, 0] * h_pred
 {% endhighlight %}
 
 
