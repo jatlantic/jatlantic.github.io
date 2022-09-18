@@ -54,7 +54,7 @@ $MSE = \frac{1}{n}\sum_{i=1}^n (yi-\hat{y}_i)^2$
 $H(p,q) = -\sum p(x) \log q(x)$
 
 
-In [numpy-ml package](https://numpy-ml.readthedocs.io/en/latest/) these are coded a little bit more extensively. Let's have a brief look at it. Note that for the sake of simplicity I removed the `line_search()`
+In [numpy-ml package](https://numpy-ml.readthedocs.io/en/latest/) these are coded a little bit more extensively. Let's have a brief look at it. Note that for the sake of simplicity I removed `line_search()`.
 
 {% highlight python %}
 class MSELoss:

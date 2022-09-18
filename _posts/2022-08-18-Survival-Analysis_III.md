@@ -42,11 +42,11 @@ $L = \left[ \frac{h_0(t)e^{\beta_1}}{h_0(t)e^{\beta_1} + h_0(t)e^{0} + h_0(t)e^{
 
 We can easily see that $h_0(t)$ cancels out which allows us to generalize the above formula to following partial likelihood:
 
-$PL(\beta)=\prod_{i:C_i=1}\frac{h(Y_i \vert X_i)}{\sum_{j:Y_j\geq Y_j}\exp{h(Y_i\vert X_j)}}$
+$PL(\beta)=\prod_{i:C_i=1}\frac{h(Y_i \vert X_i)}{\sum_{j:Y_j\geq Y_i}\exp{h(Y_i\vert X_j)}}$
 
 which together with the Cox assumptions turns into [1]:
 
-$\begin{equation} PL(\beta)=\prod_{i:C_i=1}\frac{\exp{(X_i \beta)}}{\sum_{j:Y_j\geq Y_j}\exp{(X_j \beta)}} \end{equation}$
+$\begin{equation} PL(\beta)=\prod_{i:C_i=1}\frac{\exp{(X_i \beta)}}{\sum_{j:Y_j\geq Y_i}\exp{(X_j \beta)}} \end{equation}$
 
 where 
 
@@ -59,7 +59,7 @@ where
 Taking the log gives us:
 
 
-$logPL(\beta)=\sum_{i:C_i=1}\left[ \exp{(X_i \beta)}- \log \left(\sum_{j:Y_j\geq Y_j}\exp{(X_j \beta)}\right)\right]$
+$logPL(\beta)=\sum_{i:C_i=1}\left[ \exp{(X_i \beta)}- \log \left(\sum_{j:Y_j\geq Y_i}\exp{(X_j \beta)}\right)\right]$
 
 If we add a minus to the beginning of the above equation we obtain the Cox PH loss function that we would like to minimize. Now instead of taking the derivative with respect to $\beta$ and set it to zero, we'll use JAX here (following the post by Sidravi). First, we note that the above can only be applied when no ties are present that is there is not more than one event occurring at the same time. If this is the case *Breslow*'s or *Efron*'s method can be used.
 So to conform with that assumption we prepare the data accordingly:
