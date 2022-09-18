@@ -51,7 +51,7 @@ $\begin{equation} PL(\beta)=\prod_{i:C_i=1}\frac{\exp{(X_i \beta)}}{\sum_{j:Y_j\
 where 
 
 - $𝐶_i$ = type of event either one for the event or 0 for right−censoring so that product sum in the formula above goes over all individuals that experienced the event.
-- $Y_t$ represents the time of the event for individual i so that $j:Y_j\geq Y_j$ represents the individuals at risk at $Y_t$.
+- $Y_t$ represents the time of the event for individual i so that $j:Y_j\geq Y_i$ represents the individuals at risk at $Y_t$.
 
 
 
