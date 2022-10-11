@@ -59,7 +59,7 @@ where
 Taking the log gives us:
 
 
-$logPL(\beta)=\sum_{i:C_i=1}\left[ \exp{(X_i \beta)}- \log \left(\sum_{j:Y_j\geq Y_i}\exp{(X_j \beta)}\right)\right]$
+$logPL(\beta)=\sum_{i:C_i=1}\left[ X_i \beta- \log \left(\sum_{j:Y_j\geq Y_i}\exp{(X_j \beta)}\right)\right]$
 
 If we add a minus to the beginning of the above equation we obtain the Cox PH loss function that we would like to minimize. Now instead of taking the derivative with respect to $\beta$ and set it to zero, we'll use JAX here (following the post by Sidravi). First, we note that the above can only be applied when no ties are present that is there is not more than one event occurring at the same time. If this is the case *Breslow*'s or *Efron*'s method can be used.
 So to conform with that assumption we prepare the data accordingly:
